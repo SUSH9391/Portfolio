@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio — Data Analyst · Business Analyst · Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1A2E45;
+    --navy-light: #243B55;
+    --gold: #C4963A;
+    --gold-light: #DEB96A;
+    --cream: #F7F5F0;
+    --white: #FFFFFF;
+    --text-dark: #0D1B2A;
+    --text-muted: #5A6B7B;
+    --text-light: #8A9BAB;
+    --border: #E2DDD5;
+    --accent-teal: #1A7A6E;
+    --accent-teal-light: #E8F5F3;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--text-dark);
+    background: var(--white);
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4rem;
+    height: 64px;
+    background: rgba(255,255,255,0.95);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    background: var(--navy);
+    padding: 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 45%; height: 100%;
+    background: var(--navy-light);
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  #hero::after {
+    content: '';
+    position: absolute; right: 8%; top: 50%;
+    transform: translateY(-50%);
+    width: 340px; height: 340px;
+    border: 1px solid rgba(196,150,58,0.25);
+    border-radius: 50%;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 640px; }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  /* ── EDITABLE: Change your name above in the HTML ── */
+  .hero-title {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em;
+    margin-bottom: 2rem;
+  }
+  .hero-divider {
+    width: 48px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 2rem;
+  }
+  .hero-bio {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 0.8rem 2rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--white); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4rem; }
+  section:nth-child(even) { background: var(--cream); }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── ABOUT / SKILLS SPLIT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.85;
+  }
+  .skills-group { margin-bottom: 2rem; }
+  .skills-group-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+  }
+  .skills-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--navy);
+    background: var(--white);
+    border: 1px solid var(--border);
+    letter-spacing: 0.02em;
+  }
+  .tag.accent {
+    background: var(--navy);
+    color: var(--gold-light);
+    border-color: var(--navy);
+  }
+
+  /* ── EXPERTISE PILLARS ── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .pillar {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+  }
+  .pillar-icon {
+    width: 40px; height: 40px;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--navy);
+  }
+  .pillar-icon svg { width: 20px; height: 20px; fill: var(--gold); }
+  .pillar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .pillar p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .project-card {
+    background: var(--white);
+    padding: 2.5rem;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .project-card:hover { background: var(--cream); }
+  .project-type {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .project-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .project-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .project-impact {
+    padding: 0.9rem 1.1rem;
+    background: var(--accent-teal-light);
+    border-left: 2px solid var(--accent-teal);
+    font-size: 0.85rem;
+    color: var(--accent-teal);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .project-tags .tag { font-size: 0.75rem; padding: 0.25rem 0.65rem; }
+
+  /* ── METRICS BAR ── */
+  #metrics {
+    background: var(--navy);
+    padding: 4rem;
+    text-align: center;
+  }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .metric-item {}
+  .metric-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .metric-label {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ── EXPERIENCE TIMELINE ── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item { position: relative; margin-bottom: 3rem; }
+  .timeline-dot {
+    position: absolute; left: -2rem;
+    top: 6px;
+    width: 9px; height: 9px;
+    background: var(--gold);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+  .timeline-period {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.4rem;
+  }
+  .timeline-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+  .timeline-company {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy); }
+  #contact .section-title { color: var(--white); }
+  #contact .section-subtitle { color: rgba(255,255,255,0.5); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-item { margin-bottom: 1.75rem; }
+  .contact-item-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.3rem;
+  }
+  .contact-item-value {
+    font-size: 1rem;
+    color: var(--white);
+    font-weight: 300;
+  }
+  .contact-item-value a { color: var(--gold-light); text-decoration: none; }
+  .contact-item-value a:hover { text-decoration: underline; }
+  .contact-form-note {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080F18;
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+  .footer-nav { display: flex; gap: 1.5rem; }
+  .footer-nav a { font-size: 0.78rem; color: rgba(255,255,255,0.25); text-decoration: none; }
+  .footer-nav a:hover { color: rgba(255,255,255,0.55); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    section, #hero, #contact { padding: 4rem 1.5rem; }
+    #metrics { padding: 3rem 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+    #hero::before { display: none; }
+    #hero::after { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .pillars-grid, .metrics-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <span class="nav-brand">YourName.</span><!-- ✏️ EDIT: Your name -->
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Data · Business · Science</p>
+    <h1 class="hero-name">
+      Your Name Here <!-- ✏️ EDIT: Your full name -->
+    </h1>
+    <p class="hero-title">Data Analyst &nbsp;·&nbsp; Business Analyst &nbsp;·&nbsp; Data Scientist</p>
+    <div class="hero-divider"></div>
+    <p class="hero-bio">
+      <!-- ✏️ EDIT: 2–3 sentences. What do you do, what's your edge, what excites you. Keep it punchy. -->
+      I turn messy data into decisions that move the needle. With expertise spanning the full data lifecycle — from raw SQL queries to predictive models — I help organisations find clarity in complexity and act with confidence.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ METRICS BAR ═══ -->
+<div id="metrics">
+  <div class="metrics-grid">
+    <!-- ✏️ EDIT: Replace these numbers with your real stats -->
+    <div class="metric-item">
+      <div class="metric-num">12+</div>
+      <div class="metric-label">Projects Delivered</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">4</div>
+      <div class="metric-label">Years Experience</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">5</div>
+      <div class="metric-label">Industries</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">3</div>
+      <div class="metric-label">Tools Certified</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <p class="section-label">About Me</p>
+  <h2 class="section-title">Bridging data<br>and business strategy</h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <!-- ✏️ EDIT: Write your bio in 3–4 short paragraphs. Be specific about your background. -->
+      <p>
+        I'm a hybrid data professional comfortable at the intersection of analysis, strategy, and machine learning. I've worked across the full stack — from writing complex SQL joins and building Tableau dashboards to designing A/B tests and deploying regression models.
+      </p>
+      <p>
+        My edge is that I speak both languages: I can walk into a boardroom and explain a churn model to a CFO, and then walk into an engineering standup and talk about pipeline architecture. I believe good analysis only counts if it changes decisions.
+      </p>
+      <p>
+        <!-- ✏️ EDIT: Add something personal — your education, city, what you're currently learning -->
+        Currently based in Chennai, India. Open to remote-first roles globally. Actively exploring LLM fine-tuning and causal inference methods.
+      </p>
+    </div>
+
+    <div class="about-skills">
+      <div class="skills-group">
+        <p class="skills-group-label">Languages & Querying</p>
+        <div class="skills-tags">
+          <!-- ✏️ EDIT: Add/remove tags to match your actual skills -->
+          <span class="tag accent">Python</span>
+          <span class="tag accent">SQL</span>
+          <span class="tag">R</span>
+          <span class="tag">DAX</span>
+          <span class="tag">Bash</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <p class="skills-group-label">Analytics & BI Tools</p>
+        <div class="skills-tags">
+          <span class="tag accent">Power BI</span>
+          <span class="tag accent">Tableau</span>
+          <span class="tag">Excel</span>
+          <span class="tag">Looker</span>
+          <span class="tag">Google Data Studio</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <p class="skills-group-label">Data Science & ML</p>
+        <div class="skills-tags">
+          <span class="tag accent">Scikit-learn</span>
+          <span class="tag">XGBoost</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <p class="skills-group-label">Platforms & Methods</p>
+        <div class="skills-tags">
+          <span class="tag">Jira</span>
+          <span class="tag">Confluence</span>
+          <span class="tag">Git</span>
+          <span class="tag">Agile</span>
+          <span class="tag">A/B Testing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERTISE PILLARS ═══ -->
+<section id="expertise">
+  <p class="section-label">What I Do</p>
+  <h2 class="section-title">Three disciplines,<br>one perspective</h2>
+  <p class="section-subtitle">I bring the rigor of data science, the clarity of analytics, and the commercial thinking of a business analyst to every engagement.</p>
+
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h12v2H3v-2zm0 4h8v2H3v-2zm0 4h4v2H3v-2z"/></svg>
+      </div>
+      <h3>Data Analysis</h3>
+      <!-- ✏️ EDIT: Describe your data analysis work in 2–3 sentences -->
+      <p>Cleaning, exploring, and visualising datasets to surface actionable patterns. I build dashboards that aren't just pretty — they answer real business questions and drive recurring decisions.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Business Analysis</h3>
+      <!-- ✏️ EDIT: Describe your BA work -->
+      <p>Bridging stakeholder requirements and technical solutions. I run discovery workshops, document user stories, map processes, and translate business problems into measurable outcomes.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 17.93V18a1 1 0 0 0-2 0v1.93A8 8 0 0 1 4.07 13H6a1 1 0 0 0 0-2H4.07A8 8 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8 8 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8 8 0 0 1 13 19.93zM12 11a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
+      </div>
+      <h3>Data Science</h3>
+      <!-- ✏️ EDIT: Describe your data science work -->
+      <p>Building predictive models, running statistical experiments, and deploying ML pipelines. I focus on models that are interpretable and that actually get used, not just technically impressive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects">
+  <p class="section-label">Selected Work</p>
+  <h2 class="section-title">Projects that made<br>a measurable difference</h2>
+  <p class="section-subtitle">A curated selection of analyses, models, and strategy work. Details available on request.</p>
+
+  <div class="projects-grid">
+
+    <!-- ✏️ PROJECT 1 — Edit all fields below -->
+    <div class="project-card">
+      <p class="project-type">Data Analysis · Power BI</p>
+      <h3>Sales Performance Dashboard for Regional Teams</h3>
+      <p>Designed and built an end-to-end Power BI dashboard for a retail client, consolidating data from 3 sources into a single self-service view for 8 regional managers.</p>
+      <div class="project-impact">↑ 30% reduction in weekly reporting time</div>
+      <div class="project-tags">
+        <span class="tag">Power BI</span>
+        <span class="tag">SQL</span>
+        <span class="tag">DAX</span>
+        <span class="tag">Excel</span>
+      </div>
+    </div>
+
+    <!-- ✏️ PROJECT 2 -->
+    <div class="project-card">
+      <p class="project-type">Data Science · Machine Learning</p>
+      <h3>Customer Churn Prediction Model</h3>
+      <p>Built an XGBoost classifier on 18 months of subscription data to predict churn 60 days in advance, enabling the customer success team to intervene proactively.</p>
+      <div class="project-impact">85% model precision · Saved 120 accounts in pilot</div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">XGBoost</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Pandas</span>
+      </div>
+    </div>
+
+    <!-- ✏️ PROJECT 3 -->
+    <div class="project-card">
+      <p class="project-type">Business Analysis · Strategy</p>
+      <h3>Process Re-engineering for Logistics Ops</h3>
+      <p>Led a requirements-gathering initiative across 4 departments to map the as-is order fulfilment process, identify bottlenecks, and propose a to-be model with technology recommendations.</p>
+      <div class="project-impact">Proposed changes estimated to cut processing time by 40%</div>
+      <div class="project-tags">
+        <span class="tag">Process Mapping</span>
+        <span class="tag">Jira</span>
+        <span class="tag">Stakeholder Mgmt</span>
+      </div>
+    </div>
+
+    <!-- ✏️ PROJECT 4 — Duplicate this block for more projects -->
+    <div class="project-card">
+      <p class="project-type">Data Analysis · A/B Testing</p>
+      <h3>Pricing Page A/B Experiment Analysis</h3>
+      <p>Designed and analysed a multivariate test on a SaaS pricing page with 3 variants, using Bayesian inference to reach significance faster than traditional t-tests.</p>
+      <div class="project-impact">+18% conversion uplift validated at 95% confidence</div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">A/B Testing</span>
+        <span class="tag">Statistics</span>
+        <span class="tag">Google Analytics</span>
+      </div>
+    </div>
+
+    <!-- ✏️ PROJECT 5 -->
+    <div class="project-card">
+      <p class="project-type">Data Science · NLP</p>
+      <h3>Customer Review Sentiment Classifier</h3>
+      <p>Fine-tuned a BERT-based sentiment model on 50k product reviews to automatically tag incoming feedback as positive, neutral, or negative, feeding into a weekly operations report.</p>
+      <div class="project-impact">92% accuracy · Replaced 3 hours of manual tagging/week</div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">HuggingFace</span>
+        <span class="tag">NLP</span>
+        <span class="tag">BERT</span>
+      </div>
+    </div>
+
+    <!-- ✏️ PROJECT 6 -->
+    <div class="project-card">
+      <p class="project-type">Business Analysis · Data</p>
+      <h3>KPI Framework Design for Series B Startup</h3>
+      <p>Worked with founding team and investors to define a north-star metric and a coherent KPI tree, then built the data infrastructure to track and report on each metric weekly.</p>
+      <div class="project-impact">First data-driven board pack delivered in week 6</div>
+      <div class="project-tags">
+        <span class="tag">Tableau</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Strategy</span>
+        <span class="tag">Stakeholder Mgmt</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience">
+  <p class="section-label">Career</p>
+  <h2 class="section-title">Where I've worked</h2>
+  <p class="section-subtitle">A track record across industries and scales.</p>
+
+  <div class="timeline">
+
+    <!-- ✏️ EDIT each timeline-item with your real roles -->
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <p class="timeline-period">Jan 2023 – Present</p>
+      <p class="timeline-role">Senior Data Analyst</p>
+      <p class="timeline-company">Company Name, City</p>
+      <p class="timeline-desc">
+        <!-- ✏️ 2–3 bullet-style sentences about what you did and the impact -->
+        Led analytics for the growth team, owning dashboards used by 40+ stakeholders. Automated ETL pipelines cutting data latency from 24h to 2h. Partnered with product managers to define experiment frameworks for feature rollouts.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <p class="timeline-period">Jun 2021 – Dec 2022</p>
+      <p class="timeline-role">Business Analyst</p>
+      <p class="timeline-company">Company Name, City</p>
+      <p class="timeline-desc">
+        Gathered and documented requirements for a CRM migration project spanning 3 business units. Facilitated UAT, produced FRDs and BRDs, and liaised between technical teams and senior stakeholders.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <p class="timeline-period">Aug 2019 – May 2021</p>
+      <p class="timeline-role">Data Analyst (Junior)</p>
+      <p class="timeline-company">Company Name, City</p>
+      <p class="timeline-desc">
+        Built SQL-based reports and Excel models for the finance team. Created first Tableau dashboard for executive leadership. Supported forecasting models using regression analysis.
+      </p>
+    </div>
+
+    <!-- ✏️ Add more timeline-items here if needed -->
+
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <p class="section-label">Let's Talk</p>
+  <h2 class="section-title">Open to opportunities</h2>
+  <p class="section-subtitle">If you're hiring, collaborating, or just curious — reach out directly.</p>
+
+  <div class="contact-grid">
+    <div>
+      <!-- ✏️ EDIT: Your contact details -->
+      <div class="contact-item">
+        <p class="contact-item-label">Email</p>
+        <p class="contact-item-value"><a href="mailto:you@email.com">you@email.com</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">LinkedIn</p>
+        <p class="contact-item-value"><a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">GitHub</p>
+        <p class="contact-item-value"><a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">Location</p>
+        <p class="contact-item-value">Chennai, India &nbsp;·&nbsp; Open to remote</p>
+      </div>
+    </div>
+    <div>
+      <p class="contact-form-note">
+        <!-- ✏️ EDIT: Your availability note for recruiters -->
+        I'm currently open to full-time roles in data analytics, business intelligence, and data science — particularly in fintech, SaaS, or consulting environments. I respond to cold emails within 24 hours.
+      </p>
+      <a href="mailto:you@email.com" class="btn-primary">Send me an email →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <p>© 2025 Your Name. All rights reserved.</p><!-- ✏️ EDIT -->
+  <nav class="footer-nav">
+    <a href="#hero">Top</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</footer>
+
+</body>
+</html>
