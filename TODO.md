@@ -1,0 +1,1 @@
+# Name Update Complete for Sushmitha\n\n## Status: ✅ All tasks done\n- Created TODO.md\n- Updated hero name to 'Sushmitha'\n- Updated nav-brand to 'Sushmitha.'\n- Updated footer to '© 2025 Sushmitha. All rights reserved.'\n- Verified via diffs\n\nNavbar: Dark navy background, visible text (not white). Refresh if needed.\n\nProject ready.
