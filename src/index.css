@@ -12,7 +12,8 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 12.5px;
+
   color: #fff;
   background: linear-gradient(0deg, #000, #001d00, #000);
   background-size: 400% 400%;
@@ -63,15 +64,25 @@ img { display: block; max-width: 100%; }
 #pageSetup {
   width: 1260px;
   max-width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (max-width: 1300px) {
+/* Container tiers */
+@media (min-width: 1301px) {
+  #pageSetup { width: 1260px; }
+}
+
+@media (min-width: 768px) and (max-width: 1300px) {
   #pageSetup { width: 90%; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   #pageSetup { width: 100%; }
 }
+
 
 /* ── Pill Button (shared) ──────────────────────────── */
 .pillBtn {
@@ -104,8 +115,14 @@ img { display: block; max-width: 100%; }
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 18px 0;
+  padding: 24px 0;
 }
+
+/* Spacing between navbar and page content */
+main#pageSetup {
+  padding-top: 30px;
+}
+
 
 .headerInner {
   width: 90%;
@@ -115,6 +132,8 @@ img { display: block; max-width: 100%; }
   align-items: center;
   justify-content: space-between;
 }
+
+
 
 /* Hamburger */
 .main-item.menu {
@@ -244,7 +263,7 @@ img { display: block; max-width: 100%; }
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   padding-top: 20px;
   min-height: 70vh;
@@ -258,9 +277,9 @@ img { display: block; max-width: 100%; }
 
 .bigTitle {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13rem;
+  font-size: 11.5rem;
   font-weight: 500;
-  line-height: 0.9;
+  line-height: 1.1;
   text-transform: uppercase;
   display: flex;
   overflow: hidden;
@@ -285,15 +304,17 @@ img { display: block; max-width: 100%; }
   width: 100%;
   border-radius: 100px;
   object-fit: cover;
-  aspect-ratio: 1 / 1.1;
+  aspect-ratio: 1 / 0.9;
 }
 
 /* ── About Me ──────────────────────────────────────── */
 .landingPageContainer {
-  width: 90%;
-  margin: 80px auto;
+  width: 100%;
+  margin: 0;
   text-align: center;
 }
+
+
 
 .landingPageContainer h1 {
   font-family: 'Barlow Condensed', sans-serif;
@@ -308,25 +329,29 @@ img { display: block; max-width: 100%; }
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 1.7;
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 50px 0;
   color: #e0e0e0;
 }
 
 /* ── Featured Projects ─────────────────────────────── */
 .featuredProjects {
-  width: 90%;
-  margin: 0 auto 100px;
+  width: 100%;
+  margin: 0 auto 70px;
 }
+
 
 .featuredProjects > h1 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 4rem;
+  font-size: 56px;
+  color: #ffffff;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 24px;
+  margin: 0 0 24px 0;
+  text-align: center;
 }
+
 
 .projectsContainer {
   display: flex;
@@ -402,9 +427,10 @@ img { display: block; max-width: 100%; }
   align-items: center;
   width: 90%;
   margin: 0 auto;
-  padding-bottom: 100px;
+  padding-bottom: 70px;
   position: relative;
 }
+
 
 .resumePage > h1 {
   font-family: 'Barlow Condensed', sans-serif;
@@ -511,6 +537,9 @@ img { display: block; max-width: 100%; }
 @media (min-width: 767px) and (max-width: 956px) {
   .jobTile.rightShift { transform: translateX(120px); }
   .jobTile.leftShift  { transform: translateX(-120px); }
+
+  .jobTile { background-color: #58644c; }
+  .jobTile:hover { background-color: #203c0c; }
 }
 
 @media (max-width: 767px) {
@@ -518,6 +547,7 @@ img { display: block; max-width: 100%; }
   .jobTile.leftShift { transform: none; }
   .jobTile { width: 100%; }
 }
+
 
 /* =====================================================
    PROJECTS PAGE
@@ -528,8 +558,9 @@ img { display: block; max-width: 100%; }
   align-items: center;
   width: 90%;
   margin: 0 auto;
-  padding-bottom: 100px;
+  padding-bottom: 70px;
 }
+
 
 .projectsPage > h1 {
   font-family: 'Barlow Condensed', sans-serif;
@@ -543,11 +574,13 @@ img { display: block; max-width: 100%; }
 
 .projectsContainerPage {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-auto-rows: minmax(450px, auto);
   gap: 20px;
-  width: 107%;
+  width: 100%;
+  justify-items: stretch;
 }
+
 
 /* ── Project Tile ──────────────────────────────────── */
 .projectPageTileComp {
@@ -670,8 +703,9 @@ img { display: block; max-width: 100%; }
   align-items: center;
   width: 90%;
   margin: 0 auto;
-  padding-bottom: 100px;
+  padding-bottom: 70px;
 }
+
 
 .contactPage > h1 {
   font-family: 'Barlow Condensed', sans-serif;
@@ -811,70 +845,108 @@ img { display: block; max-width: 100%; }
 /* Mobile ≤ 768px */
 @media (max-width: 768px) {
 
-  /* Header — logo first, hamburger second, hide Connect */
-  .headerInner {
-    flex-direction: row;
-  }
+  /* Header — mobile reflow */
+  header { width: 100%; padding: 25px 30px; box-sizing: border-box; height: auto; }
+  .headerInner { width: 100%; justify-content: space-between; }
 
-  .connectBtn { display: none; }
+  /* Reorder: logo first, hamburger second */
+  header h1 { order: 1; }
+  #wrapper { margin: 0; order: 2; }
+  .main-item.menu { order: 2; margin: 0; }
 
-  /* Landing */
+  /* Hide Connect */
+  header .connectBtn { display: none; }
+
+  /* Nav overlay link size grows */
+  .noList li { margin-bottom: 10%; }
+  .navList li a { font-size: 4rem; }
+
+  /* Landing stacks vertically */
   .landingPageFace {
     flex-direction: column;
+    margin-bottom: 10%;
     align-items: center;
     padding-top: 10px;
   }
 
-  .leftOfFace { order: 2; }
-  .profileContainer { width: 70%; order: 1; margin-bottom: 20px; }
+  /* Title scales fluidly */
+  .bigTitle { font-size: 27vw; }
 
-  .bigTitle { font-size: 4.5rem; }
+  .leftOfFace { margin-bottom: 40px; }
+  .leftOfFace { order: 1; }
 
-  /* About */
-  .landingPageContainer p { font-size: 1.1rem; }
+  .profileContainer { width: 85%; order: 2; margin-bottom: 0; }
+  .profileImg { margin-bottom: 10%; }
 
-  /* Featured cards — stack */
+  .profileContainer .pillBtn {
+    font-size: 7vw;
+    width: 60%;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  /* About (mobile only) */
+  .aboutMeContainer { display: flex; justify-content: center; }
+  .aboutMeContainer p { width: 85%; align-self: center; }
+
+  .landingPageContainer { margin-bottom: 0; }
+  .landingPageContainer h1 {
+    width: 95%;
+    text-align: center;
+    font-size: 4rem;
+  }
+  .landingPageContainer p {
+    width: 85%;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+  }
+
+  /* Featured Projects — accordion stack */
   .projectsContainer {
     flex-direction: column;
-    height: auto;
-    gap: 15px;
+    height: 80vh;
+    width: 85%;
   }
 
   .featuredProjectCard {
-    width: 100%;
-    height: 50vh;
-    flex: none;
-  }
-
-  .featuredProjectCard:hover {
-    flex: none;
+    margin-bottom: 10%;
     height: 50vh;
   }
 
-  /* Resume */
-  .resumePage > h1 { font-size: 6rem; }
+  .backgroundDim { background-color: transparent; }
 
-  /* Big titles on pages */
-  .projectsPage > h1,
-  .contactPage > h1 { font-size: 6rem; }
+  /* Resume page mobile */
+  .resumePage > h1 { font-size: 31vw; margin-bottom: 10%; }
+  .rightShift, .leftShift { transform: translate(0); }
+  .jobTile { width: 95%; z-index: 10; }
+  .middleLine { display: none; }
 
-  .leftContact h2 { font-size: 9.7vw; }
+  /* Projects page */
+  .projectsPage > h1 { font-size: 25vw; }
+  .projectsContainerPage { width: 90%; margin-top: 10%; }
+  .projectPageTileComp h1 { text-align: left; }
 
-  /* Projects grid */
-  .projectsContainerPage {
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
-
-  /* Contact */
+  /* Contact page */
+  .contactPage { display: flex; flex-direction: column; }
   .contactForm {
     flex-direction: column;
-    margin-top: 40px;
+    width: 85%;
+    align-items: center;
+    align-self: center;
+    margin-top: 5%;
   }
-
-  .leftContact,
+  .contactForm h2 {
+    font-size: 9.7vw;
+    width: 100%;
+    margin-bottom: 10%;
+    font-weight: 300;
+  }
   .rightForm { width: 100%; }
 
-  /* Nav items font */
+  /* Nav items font (already) */
   .navList li a { font-size: 4rem; }
 }
+
