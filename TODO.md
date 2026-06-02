@@ -1,1 +1,10 @@
-# Name Update Complete for Sushmitha\n\n## Status: ✅ All tasks done\n- Created TODO.md\n- Updated hero name to 'Sushmitha'\n- Updated nav-brand to 'Sushmitha.'\n- Updated footer to '© 2025 Sushmitha. All rights reserved.'\n- Verified via diffs\n\nNavbar: Dark navy background, visible text (not white). Refresh if needed.\n\nProject ready.
+## TODO
+
+- [x] 1. Update navbar CSS to support a “scrolling down” pill-growth state.
+- [x] 2. Update JS scroll handler to detect scroll direction (delta) and apply the new state.
+- [x] 3. Ensure existing behavior (nav-scrolled when scrollY > 50) remains intact.
+- [x] 4. Quick manual test: scroll down should pill-grow; scroll up (or stop) should revert.
+
+
+
+
