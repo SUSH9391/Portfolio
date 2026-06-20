@@ -42,15 +42,15 @@ export default function Home() {
       {/* ── Landing Face ───────────────────────────────── */}
       <section className="landingPageFace" aria-label="Landing">
         <div className="leftOfFace">
-          <AnimatedTitle text="SHADMAN" />
-          <AnimatedTitle text="SOHEL" />
+          <AnimatedTitle text="SUSHMITHA" />
+          <AnimatedTitle text="BALIGA" />
         </div>
 
         <div className="profileContainer">
           <img
             className="profileImg"
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80"
-            alt="Profile photo"
+            src="/sushmitha.jpg"
+            alt="Sushmitha Baliga"
           />
           <Link to="/resume">
             <button className="pillBtn">Resume</button>
@@ -62,9 +62,7 @@ export default function Home() {
       <section className="landingPageContainer" aria-label="About Me">
         <h1>ABOUT ME</h1>
         <p>
-          Computer Engineering student passionate about backend development,
-          machine learning, and building products that scale. Currently seeking
-          internship opportunities to bring ideas from prototype to production.
+          Software Engineer and AI/ML specialist. Technical background includes Python, LangChain, and LangGraph, with practical experience deploying RAG and GAN models. Proficient in JavaScript frameworks for end-to-end application development.
         </p>
       </section>
 

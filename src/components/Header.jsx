@@ -27,13 +27,6 @@ export default function Header() {
     <>
       {/* Full-screen nav overlay */}
       <nav className={`openNavDesk${menuOpen ? ' showNavDesktop' : ''}`}>
-        <span
-          className="navCloseBtn"
-          onClick={() => setMenuOpen(false)}
-          aria-label="Close navigation"
-        >
-          ✕
-        </span>
         <ul className="navList">
           {NAV_ITEMS.map((item) => (
             <li key={item.label}>
@@ -65,7 +58,7 @@ export default function Header() {
 
           {/* Logo */}
           <Link to="/" className="logoLink" onClick={() => setMenuOpen(false)}>
-            <h1 className="logoTitle">Shad</h1>
+            <h1 className="logoTitle">Sush</h1>
           </Link>
 
           {/* Connect button */}

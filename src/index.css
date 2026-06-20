@@ -264,7 +264,7 @@ main#pageSetup {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 120px;
   padding-top: 20px;
   min-height: 70vh;
 }
@@ -277,7 +277,7 @@ main#pageSetup {
 
 .bigTitle {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11.5rem;
+  font-size: clamp(3.2rem, 11vw, 8rem);
   font-weight: 500;
   line-height: 1.1;
   text-transform: uppercase;
@@ -310,7 +310,7 @@ main#pageSetup {
 /* ── About Me ──────────────────────────────────────── */
 .landingPageContainer {
   width: 100%;
-  margin: 0;
+  margin: 0 auto 180px;
   text-align: center;
 }
 
@@ -318,7 +318,7 @@ main#pageSetup {
 
 .landingPageContainer h1 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 4rem;
+  font-size: clamp(2.2rem, 5vw, 4rem);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -326,7 +326,7 @@ main#pageSetup {
 }
 
 .landingPageContainer p {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
   font-weight: 300;
   line-height: 1.7;
   width: 100%;
@@ -343,7 +343,7 @@ main#pageSetup {
 
 .featuredProjects > h1 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 56px;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
   color: #ffffff;
   font-weight: 500;
   text-transform: uppercase;
@@ -428,13 +428,12 @@ main#pageSetup {
   width: 90%;
   margin: 0 auto;
   padding-bottom: 70px;
-  position: relative;
 }
 
 
 .resumePage > h1 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13rem;
+  font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 500;
   text-transform: uppercase;
   line-height: 0.9;
@@ -443,7 +442,7 @@ main#pageSetup {
 
 .resumePage > h2 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 4rem;
+  font-size: clamp(2.2rem, 5vw, 4rem);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -461,6 +460,7 @@ main#pageSetup {
   background: #fff;
   opacity: 0.15;
   pointer-events: none;
+  z-index: 0;
 }
 
 .jobContainer {
@@ -469,6 +469,7 @@ main#pageSetup {
   gap: 20px;
   width: 100%;
   margin-bottom: 60px;
+  position: relative;
 }
 
 /* ── Job Tile ──────────────────────────────────────── */
@@ -482,6 +483,8 @@ main#pageSetup {
   cursor: pointer;
   transition: max-height 0.45s ease, background 0.25s;
   opacity: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .jobTile:hover { background: #0080004d; }
@@ -564,7 +567,7 @@ main#pageSetup {
 
 .projectsPage > h1 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13rem;
+  font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 500;
   text-transform: uppercase;
   line-height: 0.9;
@@ -709,7 +712,7 @@ main#pageSetup {
 
 .contactPage > h1 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13rem;
+  font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 500;
   text-transform: uppercase;
   line-height: 0.9;
@@ -732,7 +735,7 @@ main#pageSetup {
 
 .leftContact h2 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 7rem;
+  font-size: clamp(2.5rem, 8vw, 7rem);
   font-weight: 500;
   line-height: 1;
   text-transform: uppercase;
@@ -785,11 +788,11 @@ main#pageSetup {
   background: #fff;
   color: #000;
   border: 2px solid #fff;
-  border-radius: 30px;
-  font-size: 1.6rem;
+  border-radius: 25px;
+  font-size: 1.05rem;
   font-family: 'DM Sans', sans-serif;
   font-weight: 500;
-  padding: 12px 36px;
+  padding: 10px 28px;
   cursor: pointer;
   transition: background 0.25s, color 0.25s, border-color 0.25s;
   align-self: flex-start;
@@ -839,7 +842,6 @@ main#pageSetup {
 
 /* Tablet */
 @media (max-width: 1030px) {
-  .bigTitle { font-size: 10rem; }
 }
 
 /* Mobile ≤ 768px */
@@ -864,13 +866,10 @@ main#pageSetup {
   /* Landing stacks vertically */
   .landingPageFace {
     flex-direction: column;
-    margin-bottom: 10%;
+    margin-bottom: 80px;
     align-items: center;
     padding-top: 10px;
   }
-
-  /* Title scales fluidly */
-  .bigTitle { font-size: 27vw; }
 
   .leftOfFace { margin-bottom: 40px; }
   .leftOfFace { order: 1; }
@@ -879,8 +878,8 @@ main#pageSetup {
   .profileImg { margin-bottom: 10%; }
 
   .profileContainer .pillBtn {
-    font-size: 7vw;
-    width: 60%;
+    font-size: 1.1rem;
+    width: 180px;
     padding-left: 0;
     padding-right: 0;
     text-align: center;
@@ -890,11 +889,10 @@ main#pageSetup {
   .aboutMeContainer { display: flex; justify-content: center; }
   .aboutMeContainer p { width: 85%; align-self: center; }
 
-  .landingPageContainer { margin-bottom: 0; }
+  .landingPageContainer { margin-bottom: 120px; }
   .landingPageContainer h1 {
     width: 95%;
     text-align: center;
-    font-size: 4rem;
   }
   .landingPageContainer p {
     width: 85%;
@@ -919,13 +917,13 @@ main#pageSetup {
   .backgroundDim { background-color: transparent; }
 
   /* Resume page mobile */
-  .resumePage > h1 { font-size: 31vw; margin-bottom: 10%; }
+  .resumePage > h1 { margin-bottom: 10%; }
   .rightShift, .leftShift { transform: translate(0); }
   .jobTile { width: 95%; z-index: 10; }
   .middleLine { display: none; }
 
   /* Projects page */
-  .projectsPage > h1 { font-size: 25vw; }
+  /* Projects page */
   .projectsContainerPage { width: 90%; margin-top: 10%; }
   .projectPageTileComp h1 { text-align: left; }
 
@@ -939,7 +937,6 @@ main#pageSetup {
     margin-top: 5%;
   }
   .contactForm h2 {
-    font-size: 9.7vw;
     width: 100%;
     margin-bottom: 10%;
     font-weight: 300;

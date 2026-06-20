@@ -22,7 +22,7 @@ export default function Contact() {
       <div className="contactForm">
         {/* Left — headline */}
         <div className="leftContact">
-          <h2>LET'S<br />TALK.</h2>
+          <h2>LET'S TALK.</h2>
         </div>
 
         {/* Right — form */}

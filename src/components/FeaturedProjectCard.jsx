@@ -1,4 +1,4 @@
-export default function FeaturedProjectCard({ title, subtitle, image, color = '#1cac78' }) {
+export default function FeaturedProjectCard({ title, subtitle, image }) {
   return (
     <div className="featuredProjectCard">
       <img src={image} alt={title} />
